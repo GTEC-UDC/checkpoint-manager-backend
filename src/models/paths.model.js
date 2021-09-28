@@ -10,13 +10,14 @@ module.exports = function (app) {
   const mongooseClient = app.get('mongooseClient');
   const { Schema } = mongooseClient;
   const checkpoint = new Schema({ 
+    _id: {type: ObjectId, required: true},
     tag: { type: String, required: true},
     x: {type: Number, required:true, default:0},
     y: {type: Number, required:true, default:0},
     floor: {type: String},
     timestamp : {type:Number, required:true}
   });
- 
+
   const schema = new Schema({
     ownerEmail: {type: String, required:true},
     ownerId: {type: ObjectId, required:true},

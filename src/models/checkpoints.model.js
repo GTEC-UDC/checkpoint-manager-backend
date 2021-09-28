@@ -1,4 +1,4 @@
-// routes-model.js - A mongoose model
+// checkpoints-model.js - A mongoose model
 // 
 // See http://mongoosejs.com/docs/models.html
 // for more of what you can do here.
@@ -6,23 +6,16 @@
 const { isValidObjectId, ObjectId } = require("mongoose");
 
 module.exports = function (app) {
-  const modelName = 'routes';
+  const modelName = 'checkpoints';
   const mongooseClient = app.get('mongooseClient');
   const { Schema } = mongooseClient;
-
-  const point = new Schema({ 
-    _id: {type: ObjectId, required: true},
+  const schema = new Schema({
     tag: { type: String, required: true },
     x: {type: Number, required:true, default:0},
     y: {type: Number, required:true, default:0},
     floor: {type: String}
-  });
-
-  const schema = new Schema({
-    tag: { type: String, required: true },
-    points: {type: [point], required:true, default: []}
   }, {
-    timestamps: true
+    timestamps: false
   });
 
   // This is necessary to avoid model compilation errors in watch mode

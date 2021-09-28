@@ -1,26 +1,28 @@
-// routes-model.js - A mongoose model
+// beaconreports-model.js - A mongoose model
 // 
 // See http://mongoosejs.com/docs/models.html
 // for more of what you can do here.
 
-const { isValidObjectId, ObjectId } = require("mongoose");
+const { ObjectId } = require("mongoose");
 
 module.exports = function (app) {
-  const modelName = 'routes';
+  const modelName = 'beaconreports';
   const mongooseClient = app.get('mongooseClient');
   const { Schema } = mongooseClient;
 
-  const point = new Schema({ 
-    _id: {type: ObjectId, required: true},
-    tag: { type: String, required: true },
-    x: {type: Number, required:true, default:0},
-    y: {type: Number, required:true, default:0},
-    floor: {type: String}
+
+  const beaconScan = new Schema({ 
+    uuid: { type: String, required: true},
+    major: {type: Number, required:true, default:0},
+    minor: {type: Number, required:true, default:0},
+    rssi: {type: Number, required:true, default:0},
+    timestamp : {type:Number, required:true}
   });
 
   const schema = new Schema({
-    tag: { type: String, required: true },
-    points: {type: [point], required:true, default: []}
+    ownerEmail: {type: String, required:true},
+    ownerId: {type: ObjectId, required:true},
+    scans: { type: [beaconScan], required: true, default:[]}
   }, {
     timestamps: true
   });

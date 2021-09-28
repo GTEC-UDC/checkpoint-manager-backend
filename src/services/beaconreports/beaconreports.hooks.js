@@ -1,16 +1,17 @@
 const { authenticate } = require('@feathersjs/authentication').hooks;
+const hooks = require('feathers-hooks-common');
 
-const getCheckpointDataFromRoute = require('../../hooks/get-checkpoint-data-from-route');
+const setOwner = require('../../hooks/set-owner');
 
 module.exports = {
   before: {
     all: [ authenticate('jwt') ],
     find: [],
     get: [],
-    create: [getCheckpointDataFromRoute()],
-    update: [getCheckpointDataFromRoute()],
-    patch: [],
-    remove: []
+    create: [setOwner()],
+    update: [hooks.disallow('external')],
+    patch: [hooks.disallow('external')],
+    remove: [hooks.disallow('external')]
   },
 
   after: {
