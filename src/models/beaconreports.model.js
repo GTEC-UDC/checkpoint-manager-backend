@@ -15,8 +15,7 @@ module.exports = function (app) {
     uuid: { type: String, required: true},
     major: {type: Number, required:true, default:0},
     minor: {type: Number, required:true, default:0},
-    rssi: {type: Number, required:true, default:0},
-    timestamp : {type:Number, required:true}
+    rssi: {type: Number, required:true, default:0}
   });
 
   const schema = new Schema({

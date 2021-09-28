@@ -11,7 +11,7 @@ module.exports = {
     create: [setOwner()],
     update: [hooks.disallow('external')],
     patch: [hooks.disallow('external')],
-    remove: [hooks.disallow('external')]
+    remove: []
   },
 
   after: {
