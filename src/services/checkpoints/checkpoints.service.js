@@ -6,7 +6,10 @@ const hooks = require('./checkpoints.hooks');
 module.exports = function (app) {
   const options = {
     Model: createModel(app),
-    paginate: app.get('paginate')
+    paginate: {
+      default: 10,
+      max: 100
+    }
   };
 
   // Initialize our service with any options it requires
