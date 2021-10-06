@@ -1,6 +1,7 @@
 const { authenticate } = require('@feathersjs/authentication').hooks;
 
 const processPath = require('../../hooks/process-path');
+const hooks = require('feathers-hooks-common');
 
 module.exports = {
   before: {
