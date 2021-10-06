@@ -2,6 +2,9 @@
 // 
 // See http://mongoosejs.com/docs/models.html
 // for more of what you can do here.
+
+const { isValidObjectId, ObjectId } = require("mongoose");
+
 module.exports = function (app) {
   const modelName = 'timesyncs';
   const mongooseClient = app.get('mongooseClient');
