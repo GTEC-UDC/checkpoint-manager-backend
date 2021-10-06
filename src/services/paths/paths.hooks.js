@@ -8,8 +8,8 @@ module.exports = {
     find: [],
     get: [],
     create: [processPath()],
-    update: [],
-    patch: [],
+    update: [hooks.disallow('external')],
+    patch: [hooks.disallow('external')],
     remove: []
   },
 

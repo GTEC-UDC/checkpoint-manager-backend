@@ -3,6 +3,7 @@ const routes = require('./routes/routes.service.js');
 const paths = require('./paths/paths.service.js');
 const checkpoints = require('./checkpoints/checkpoints.service.js');
 const beaconreports = require('./beaconreports/beaconreports.service.js');
+const timesyncs = require('./timesyncs/timesyncs.service.js');
 // eslint-disable-next-line no-unused-vars
 module.exports = function (app) {
   app.configure(users);
@@ -10,4 +11,5 @@ module.exports = function (app) {
   app.configure(paths);
   app.configure(checkpoints);
   app.configure(beaconreports);
+  app.configure(timesyncs);
 };
